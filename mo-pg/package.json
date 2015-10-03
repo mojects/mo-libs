@@ -1,0 +1,14 @@
+{
+  "name": "mo-pg",
+  "version": "1.0.2",
+  "description": "",
+  "main": "mo-pg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mo-log": "file:../mo-log"
+  },
+  "author": "garmoshka-mo <dan@dub.ink> (http://garmoshka-mo.blogspot.com/)",
+  "license": "ISC"
+}
