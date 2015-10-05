@@ -37,6 +37,7 @@ var query = function(text, values, callback) {
     var host = process.env.DATABASE_URL;
     (query.pg || pg).connect(host, function(err, client, done) {
         var onError = function(err) {
+            if (defer) defer.reject(err);
             if (/duplicate key value violates unique constraint/.exec(err))
                 done();
             else {
