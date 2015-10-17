@@ -101,7 +101,6 @@ function getSQLs(fromDir) {
         function (er, files) {
             files.map(function(file) {
                 var key = file.slice(0, -4);
-                console.log(key);
                 fs.readFile(fromDir + '/' + file,
                     'utf8', function(err, data) {
                         sqls[key] = data;
