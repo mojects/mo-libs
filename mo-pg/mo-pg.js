@@ -90,6 +90,28 @@ query.first = function(text, values, cb) {
     })
 };
 
+
+var fs = require('fs');
+var glob = require("glob");
+
+function getSQLs(fromDir) {
+    var sqls = {};
+
+    glob("**/*.sql", {cwd: fromDir},
+        function (er, files) {
+            files.map(function(file) {
+                var key = file.slice(0, -4);
+                console.log(key);
+                fs.readFile(fromDir + '/' + file,
+                    'utf8', function(err, data) {
+                        sqls[key] = data;
+                    });
+            });
+        });
+
+    return sqls;
+}
+
 module.exports = {
-    query
+    query, getSQLs
 };
