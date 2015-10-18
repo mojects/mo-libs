@@ -97,16 +97,12 @@ var glob = require("glob");
 function getSQLs(fromDir) {
     var sqls = {};
 
-    glob("**/*.sql", {cwd: fromDir},
-        function (er, files) {
-            files.map(function(file) {
-                var key = file.slice(0, -4);
-                fs.readFile(fromDir + '/' + file,
-                    'utf8', function(err, data) {
-                        sqls[key] = data;
-                    });
-            });
-        });
+    glob
+    .sync("**/*.sql", {cwd: fromDir})
+    .map(function(file) {
+        var key = file.slice(0, -4);
+        sqls[key] = fs.readFileSync(fromDir + '/' + file, 'utf8');
+    });
 
     return sqls;
 }
