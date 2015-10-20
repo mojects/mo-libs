@@ -1,11 +1,14 @@
 {
   "name": "mo-log",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "mo-log.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "garmoshka-mo <dan@dub.ink> (http://garmoshka-mo.blogspot.com/)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "rollbar": "^0.5.8"
+  }
 }
