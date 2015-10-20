@@ -4,7 +4,7 @@ var rollbar_token = process.env.ROLLBAR_ACCESS_TOKEN;
 if (rollbar_token)
     rollbar.init(rollbar_token);
 
-var logger = log.bind('info');
+var logger = log.bind('log');
 logger.info = log.bind('info');
 logger.error = log.bind('error');
 logger.warn = log.bind('warn');
@@ -13,7 +13,8 @@ module.exports = logger;
 function log() {
     call(console[this], arguments);
 
-    if (this == 'error' || this == 'warn') {
+    if (rollbar_token &&
+        (this == 'error' || this == 'warn')) {
         rollbar.reportMessageWithPayloadData(arguments[0], {
             level: this,
             custom: arguments
